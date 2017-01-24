@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	<head>
+		<title>Spring Security</title>
+		
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+			rel="stylesheet" />
+		
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+			rel="stylesheet" />
+		
+		<link th:href="@{/webjars/font-awesome/css/font-awesome.min.css}"
+			rel="stylesheet" />
+		
+		<link th:href="@{/resources/css/estilo.css}" rel="stylesheet" />
+	</head>
+
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+	
+					<a class="navbar-brand" th:href="@{/}">AW Comercial</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li sec:authorize="hasRole('USUARIO')">
+							<a th:href="@{/vendas}"> 
+							  Vendas 
+							</a>
+						</li>
+	
+						<li class="dropdown" sec:authorize="hasAnyRole('VISUALIZAR_RELATORIO_CUSTOS', 'VISUALIZAR_RELATORIO_EQUIPE')">
+						    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-haspopup="true" aria-expanded="false">
+	                            Relatórios
+	                            <span class="caret"></span>
+						    </a>
+	
+							<ul class="dropdown-menu">
+								<li sec:authorize="hasRole('VISUALIZAR_RELATORIO_CUSTOS')">
+	                                <a th:href="@{/vendas/relatorios/custos}">Custos</a>
+								</li>
+	
+								<li sec:authorize="hasRole('VISUALIZAR_RELATORIO_EQUIPE')">
+								    <a th:href="@{/vendas/relatorios/equipe}">Equipe</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+	
+					<form method="post" class="navbar-form navbar-right"
+						th:action="@{/logout}">
+						<button type="submit" class="btn btn-default">
+							<span class="glyphicon glyphicon-log-out"></span> 
+							Sair
+						</button>
+					</form>
+	
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+						   <a href="#" class="dropdown-toggle" 
+						       data-toggle="dropdown" role="button" aria-haspopup="true"
+							  aria-expanded="false"> 
+							  AlgaWorks 
+							  <span class="caret"></span>
+						   </a>
+	
+							<ul class="dropdown-menu">
+								<li><a href="http://www.algaworks.com" target="_blank">Site</a></li>
+								<li><a href="http://www.facebook.com/algaworks" target="_blank">Facebook</a></li>
+								<li><a href="http://www.youtube.com/algaworks" target="_blank">YouTube</a></li>
+								<li><a href="http://github.com/algaworks" target="_blank">Github</a></li>
+								<li><a href="http://blog.algaworks.com/" target="_blank">Nosso Blog</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	
+		<div class="container">
+			<div layout:fragment="content">O conteúdo das páginas filhas aparecerão aqui.</div>
+		</div>
+	
+		<div class="container">
+			<hr />
+	
+			<footer>
+				<h4>Artigo sobre "O que é Spring Security?"</h4>
+			</footer>
+		</div>
+	
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</body>
+</html>

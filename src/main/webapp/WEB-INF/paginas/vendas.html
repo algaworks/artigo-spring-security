@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+	<head>
+	    <title>Vendas</title>
+	</head>
+
+	<body>
+	
+		<div layout:fragment="content">
+		    <div class="page-header">
+		        <h1>Listagem das vendas</h1>
+		    </div>
+		
+		    <table class="table table-bordered">
+		       	<thead>
+		       		<tr>
+		       			<th>Produto</th>
+		       			<th>Vendedor</th>
+		       			<th>Preço</th>
+		       		</tr>
+		       	</thead>
+		       	
+		       	<tbody>
+		       		<tr>
+		       			<td>Caneca</td>
+		       			<td>João Souza</td>
+		       			<td>R$ 105,00</td>        			
+		       		</tr>
+		       		
+		       		<tr>
+		       			<td>Livro</td>
+		       			<td>Fernando Magno</td>
+		       			<td>R$ 57,00</td>        			
+		       		</tr>
+		       		
+		       		<tr>
+		       			<td>Smartphone</td>
+		       			<td>Severino da Silva</td>
+		       			<td>R$ 897,00</td>        			
+		       		</tr>
+		       	</tbody> 	
+			</table>
+		</div>
+	</body>
+</html>
